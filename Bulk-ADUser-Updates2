@@ -1,0 +1,56 @@
+<#
+.SYNOPSIS
+    Bulk ADUsers Updates
+
+.DESCRIPTION
+    Update AD users fom CSV,
+    Important: CSV should contain user's mail in identifier csv column.
+
+.PARAMETER
+    .
+
+.EXAMPLE
+    PS .\Get-Bulk-ADUser-Updates2.ps1
+
+.INPUTS
+   'C:\script\input.csv '  
+
+.OUTPUTS
+    'C:\script\backup.csv'
+
+.NOTES
+    Author            : Ahmed Samir.
+    Owner Contact     : ahmedsamir_x64@outlook.com.
+    Version           : 1.0
+    Script send mail  : False.
+    Script export csv : true.
+    Script Nick Name  : NA
+
+    Version 1.0 - 2023/07/09 by Ahmed Samir, initial release.
+#>
+
+
+#---------------------------------------------------------[      Parameters   ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[   Initialisations  ]--------------------------------------------------------
+Start-Transcript C:\script\Bulk-ADUser-Updates2_Transcript.log -Append -Force
+$users = Import-Csv C:\script\input.csv
+$i = 1
+#---------------------------------------------------------[     Functions      ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[      Execution     ]--------------------------------------------------------
+foreach ($user in  $users){
+Write-Host [$i] $user.email -f Green
+Remove-Variable tmpuser, tmpman, managerDN -ErrorAction SilentlyContinue
+$tmpuser   = $user.email 
+$tmpman    = $user.manager 
+$managerDN = Get-ADUser -LDAPFilter "(mail=$tmpman)"
+Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * | select Email,Manager,GivenName,Surname,Department,Mobile,company,Title | Export-Csv -NoTypeInformation C:\script\backup2.csv -Append #backup
+Get-ADUser -LDAPFilter "(mail=$tmpuser)" | Set-ADUser -Manager $managerDN -GivenName $user.givenName -Surname $user.surname -Department $user.Department -MobilePhone $user.Mobile -Company $user.Company -Title $user.title #Action 
+$i++}
+#---------------------------------------------------------[      Notfication   ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[      Finish UP     ]--------------------------------------------------------
