@@ -10,7 +10,7 @@
     .
 
 .EXAMPLE
-    PS .\Get-GPOVersionReport.ps1
+    PS .\Bulk-ADUser-Updates1.ps1
 
 .INPUTS
    'C:\script\input.csv '  
