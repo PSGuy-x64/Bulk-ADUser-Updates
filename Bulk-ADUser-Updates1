@@ -1,0 +1,156 @@
+Skip to content
+PSGuy-x64
+/
+Bulk-ADUser-Updates
+
+Type / to search
+Command palette
+Create new...
+Issues
+Pull requests
+You have no unread notifications
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Pane width
+Use a value between 14% and 49%
+
+17
+Change width
+Code
+Go to file
+README.md
+Documentation • Share feedback
+BreadcrumbsBulk-ADUser-Updates
+/
+Name your file...
+in
+main
+
+Edit
+
+Preview
+Indent mode
+
+Spaces
+Indent size
+
+2
+Line wrap mode
+
+No wrap
+Selection deleted
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+﻿<#
+.SYNOPSIS
+    Bulk ADUsers Updates
+
+.DESCRIPTION
+    Update AD users fom CSV,
+    Important: CSV should contain one of these attribuites as a unique identifier in identifier column (samaccountname, GUID, SID, distinguished name)
+
+.PARAMETER
+    .
+
+.EXAMPLE
+    PS .\Get-GPOVersionReport.ps1
+
+.INPUTS
+   'C:\script\input.csv '  
+
+.OUTPUTS
+    'C:\script\backup.csv'
+
+.NOTES
+    Author            : Ahmed Samir.
+    Owner Contact     : ahmedsamir_x64@outlook.com.
+    Version           : 1.0
+    Script send mail  : False.
+    Script export csv : true.
+    Script Nick Name  : NA
+
+    Version 1.0 - 2023/07/09 by Ahmed Samir, initial release.
+#>
+
+
+#---------------------------------------------------------[      Parameters   ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[   Initialisations  ]--------------------------------------------------------
+Start-Transcript C:\script\Transcript.log -Append -Force
+$users = Import-Csv C:\script\input.csv
+$i = 1
+#---------------------------------------------------------[     Functions      ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[      Execution     ]--------------------------------------------------------
+foreach ($user in  $users){
+Write-Host script start to  update $users.count -f Yellow
+Write-Host [$i] $user.identifier -f Green
+Get-ADUser $user.identifier -pr * | select | Export-Csv -NoTypeInformation C:\script\backup.csv -Append
+Set-ADUser $user.identifier -Title $user.title -Manager $user.manager -Company $user.company -Department $user.Department
+$i++}
+#---------------------------------------------------------[      Notfication   ]--------------------------------------------------------
+
+
+#---------------------------------------------------------[      Finish UP     ]--------------------------------------------------------
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+New File at / · PSGuy-x64/Bulk-ADUser-Updates · GitHub 
