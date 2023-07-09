@@ -4,7 +4,8 @@
 
 .DESCRIPTION
     Update AD users fom CSV,
-    Important: CSV should contain user's mail in identifier column.
+    Important: CSV should contain user's mail in identifier column, 
+    and manger email in manager column
 
 .PARAMETER
     .
