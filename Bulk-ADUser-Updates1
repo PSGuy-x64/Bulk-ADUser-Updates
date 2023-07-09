@@ -34,7 +34,7 @@
 
 
 #---------------------------------------------------------[   Initialisations  ]--------------------------------------------------------
-Start-Transcript C:\script\Transcript.log -Append -Force
+Start-Transcript C:\script\Bulk-ADUser-Updates1_Transcript.log -Append -Force
 $users = Import-Csv C:\script\input.csv
 $i = 1
 #---------------------------------------------------------[     Functions      ]--------------------------------------------------------
