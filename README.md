@@ -4,6 +4,8 @@ manager could should contain (samaccountname, GUID, SID, distinguished name) val
 CSV example
 ![image](https://github.com/PSGuy-x64/Bulk-ADUser-Updates/assets/130890375/095ed61b-e8ae-4f0d-ae8a-7994e6e3fa27)
 
+![image](https://github.com/PSGuy-x64/Bulk-ADUser-Updates/assets/130890375/5e3e2b7f-0546-4e34-9ac1-fd76d0a877c1)
+
 
 
 
