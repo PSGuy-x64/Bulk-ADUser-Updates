@@ -1,4 +1,5 @@
 Bulk-ADUser-Updates1
+
 CSV should contain one of these attribuites as a unique identifier in identifier column (samaccountname, GUID, SID, distinguished name)
 manager could should contain (samaccountname, GUID, SID, distinguished name) value.
 CSV example
@@ -10,6 +11,7 @@ CSV example
 
 
 Bulk-ADUser-Updates2
+
 CSV should contain user's mail in identifier column, 
 and manger's email in manager column
 CSV example
