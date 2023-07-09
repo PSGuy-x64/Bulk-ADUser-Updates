@@ -5,7 +5,7 @@
 .DESCRIPTION
     Update AD users fom CSV,
     Important: CSV should contain one of these attribuites as a unique identifier in identifier column (samaccountname, GUID, SID, distinguished name).
-    manger could should contain (samaccountname, GUID, SID, distinguished name) value.
+    manager could should contain (samaccountname, GUID, SID, distinguished name) value.
 .PARAMETER
     .
 
