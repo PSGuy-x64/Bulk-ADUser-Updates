@@ -6,6 +6,7 @@
     Update AD users fom CSV,
     Important: CSV should contain user's mail in identifier column, 
     and manger email in manager column
+    CSV Header -- >  Identifier,Manager,GivenName,Surname,Department,Mobile,Company,Title
 
 .PARAMETER
     .
