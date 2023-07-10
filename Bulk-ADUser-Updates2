@@ -14,10 +14,10 @@
     PS .\Get-Bulk-ADUser-Updates2.ps1
 
 .INPUTS
-   'C:\script\input.csv '  
+   '.\input.csv '  
 
 .OUTPUTS
-    'C:\script\backup.csv'
+    '.\backup.csv'
 
 .NOTES
     Author            : PS Guy.
