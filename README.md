@@ -18,3 +18,15 @@ CSV should contain user's mail in identifier column,
 and manger's email in manager column
 CSV example
 ![image](https://github.com/PSGuy-x64/Bulk-ADUser-Updates/assets/130890375/2d106794-25ef-4ea8-a573-7066c73c7a0a)
+
+
+NOTES: 
+USE SCRIPT IN YOUR RSIK
+
+Risk Mitigation:
+Test first in test enviroment.
+Do backup before proceed.
+Proceed in production in waves.
+Start with lmimited no of users.
+One day between waves without changes.
+Prepare restoreplan incase of need.
