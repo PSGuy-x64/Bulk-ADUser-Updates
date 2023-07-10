@@ -31,3 +31,4 @@ Start with lmimited no of users,
 One day between waves without changes,
 Prepare restoreplan incase of need.
 
+Contact AUthor in case of urgent support, psguy-x64@outlook.com
