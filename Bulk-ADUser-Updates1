@@ -13,10 +13,10 @@
     PS .\Bulk-ADUser-Updates1.ps1
 
 .INPUTS
-   'C:\script\input.csv '  
+   '.\input.csv '  
 
 .OUTPUTS
-    'C:\script\backup.csv'
+    '.\Bulk-ADUser-Updates1_backup.csv'
 
 .NOTES
     Author            : PS Guy.
@@ -44,7 +44,7 @@ $i = 1
 foreach ($user in  $users){
 Write-Host script start to  update $users.count -f Yellow
 Write-Host [$i] $user.identifier -f Green
-Get-ADUser $user.identifier -pr * | select | Export-Csv -NoTypeInformation C:\script\backup.csv -Append
+Get-ADUser $user.identifier -pr * | select | Export-Csv -NoTypeInformation .\Bulk-ADUser-Updates1_backup.csv -Append
 Set-ADUser $user.identifier -Title $user.title -Manager $user.manager -Company $user.company -Department $user.Department
 $i++}
 #---------------------------------------------------------[      Notfication   ]--------------------------------------------------------
