@@ -35,8 +35,8 @@
 
 
 #---------------------------------------------------------[   Initialisations  ]--------------------------------------------------------
-Start-Transcript C:\script\Bulk-ADUser-Updates2_Transcript.log -Append -Force
-$users = Import-Csv C:\script\input.csv
+Start-Transcript .\Bulk-ADUser-Updates2_Transcript.log -Append -Force
+$users = Import-Csv .\input.csv
 $i = 1
 #---------------------------------------------------------[     Functions      ]--------------------------------------------------------
 
@@ -48,7 +48,7 @@ Remove-Variable tmpuser, tmpman, managerDN -ErrorAction SilentlyContinue
 $tmpuser   = $user.identifier 
 $tmpman    = $user.manager 
 $managerDN = Get-ADUser -LDAPFilter "(mail=$tmpman)"
-Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * | select SamAccountName,GUID,Email,Manager,GivenName,Surname,Department,Mobile,company,Title | Export-Csv -NoTypeInformation C:\script\backup2.csv -Append #backup
+Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * | select SamAccountName,GUID,Email,Manager,GivenName,Surname,Department,Mobile,company,Title | Export-Csv -NoTypeInformation .\Bulk-ADUser-Updates2_backup.csv -Append #backup
 Get-ADUser -LDAPFilter "(mail=$tmpuser)" | Set-ADUser -Manager $managerDN -GivenName $user.givenName -Surname $user.surname -Department $user.Department -MobilePhone $user.Mobile -Company $user.Company -Title $user.title #Action 
 $i++}
 #---------------------------------------------------------[      Notfication   ]--------------------------------------------------------
