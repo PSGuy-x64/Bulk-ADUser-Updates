@@ -15,7 +15,7 @@
     PS .\Get-Bulk-ADUser-Updates2.ps1
 
 .INPUTS
-   '.\input.csv '  
+   '.\input.csv'  
 
 .OUTPUTS
     '.\Get-Bulk-ADUser-Updates2_backup.csv'
