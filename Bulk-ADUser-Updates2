@@ -44,14 +44,15 @@ $i = 1
 
 #---------------------------------------------------------[      Execution     ]--------------------------------------------------------
 foreach ($user in  $users){
-Write-Host [$i] $user.email -f Green
+Write-Host [$i] $user.identifier -f Green
 Remove-Variable tmpuser, tmpman, managerDN -ErrorAction SilentlyContinue
 $tmpuser   = $user.identifier 
 $tmpman    = $user.manager 
 $managerDN = Get-ADUser -LDAPFilter "(mail=$tmpman)"
-Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * | select SamAccountName,GUID,Email,Manager,GivenName,Surname,Department,Mobile,Company,Title | Export-Csv -NoTypeInformation .\Bulk-ADUser-Updates2_backup.csv -Append #backup
+Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * | select SamAccountName,objectGUID,mail,Manager,GivenName,Surname,Department,Mobile,Company,Title | Export-Csv -NoTypeInformation .\Bulk-ADUser-Updates2_backup.csv -Append #backup
 Get-ADUser -LDAPFilter "(mail=$tmpuser)" | Set-ADUser -Manager $managerDN -GivenName $user.givenName -Surname $user.surname -Department $user.Department -MobilePhone $user.Mobile -Company $user.Company -Title $user.title #Action 
 $i++}
+Stop-Transcript
 #---------------------------------------------------------[      Notfication   ]--------------------------------------------------------
 
 
