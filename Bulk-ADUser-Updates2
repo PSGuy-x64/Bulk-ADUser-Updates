@@ -39,6 +39,8 @@
 Start-Transcript .\Bulk-ADUser-Updates2_Transcript.log -Append -Force
 $users = Import-Csv .\input.csv
 $i = 1
+#review before
+$users | % {$tmpuser = $_.Identifier; Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * }| ft samaccountname,@{N='Manager';E={(Get-ADUser $_.manager -pr *).mail}},givenName,surname,department,Mobile,company,title 
 #---------------------------------------------------------[     Functions      ]--------------------------------------------------------
 
 
@@ -57,3 +59,6 @@ Stop-Transcript
 
 
 #---------------------------------------------------------[      Finish UP     ]--------------------------------------------------------
+#review after
+$users | % {$tmpuser = $_.Identifier; Get-ADUser -LDAPFilter "(mail=$tmpuser)" -pr * }| ft samaccountname,@{N='Manager';E={(Get-ADUser $_.manager -pr *).mail}},givenName,surname,department,Mobile,company,title 
+
